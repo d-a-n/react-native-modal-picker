@@ -33,7 +33,8 @@ const propTypes = {
     cancelStyle: View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: View.propTypes.style,
-    cancelText: PropTypes.string
+    cancelText: PropTypes.string,
+    disabled: PropTypes.bool
 };
 
 const defaultProps = {
@@ -49,7 +50,8 @@ const defaultProps = {
     cancelStyle: {},
     cancelTextStyle: {},
     overlayStyle: {},
-    cancelText: 'cancel'
+    cancelText: 'cancel',
+    disabled: false
 };
 
 export default class ModalPicker extends BaseComponent {
@@ -171,7 +173,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={this.props.style}>
                 {dp}
-                <TouchableOpacity onPress={this.open}>
+                <TouchableOpacity onPress={this.open} disabled={this.props.disabled}>
                     {this.renderChildren()}
                 </TouchableOpacity>
             </View>
