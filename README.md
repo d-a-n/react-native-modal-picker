@@ -67,13 +67,13 @@ class SampleApp extends Component {
                     data={data}
                     initValue="Select something yummy!"
                     onChange={(option)=>{ this.setState({textInputValue:option.label})}}>
-                    
+
                     <TextInput
                         style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
                         editable={false}
                         placeholder="Select something yummy!"
                         value={this.state.textInputValue} />
-                        
+
                 </ModalPicker>
             </View>
         );
@@ -97,3 +97,4 @@ class SampleApp extends Component {
 * `optionTextStyle - object` optional, style definitions for the option text element
 * `cancelStyle - object` optional, style definitions for the cancel element
 * `cancelTextStyle - object` optional, style definitions for the cancel text element
+* `optionContainer - object` optional, style definitions for the options container
