@@ -38,13 +38,13 @@ class SampleApp extends Component {
             { key: index++, label: 'Rhubarb' },
             { key: index++, label: 'Tomatoes' }
         ];
-
         return (
             <View style={{flex:1, justifyContent:'space-around', padding:50}}>
 
                 { /* Default mode: a clickable button will re rendered */ }
                 <ModalPicker
                     data={data}
+                    style={{flex: 1, maxHeight: 50}}
                     initValue="Select something yummy!"
                     onChange={(option)=>{ alert(`${option.label} (${option.key}) nom nom nom`) }}/>
 
@@ -54,11 +54,12 @@ class SampleApp extends Component {
                  */ }
                 <ModalPicker
                     data={data}
+                    style={{flex: 1, maxHeight: 50}}
                     initValue="Select something yummy!"
                     onChange={(option)=>{ this.setState({textInputValue:option.label})}}>
 
                     <TextInput
-                        style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
+                        style={{borderWidth:1, borderColor:'#ccc', padding:10, height:50}}
                         editable={false}
                         placeholder="Select something yummy!"
                         value={this.state.textInputValue} />

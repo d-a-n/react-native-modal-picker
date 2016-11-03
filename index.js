@@ -25,6 +25,7 @@ const propTypes = {
     onChange: PropTypes.func,
     initValue: PropTypes.string,
     style: View.propTypes.style,
+    touchableStyle: View.propTypes.style,
     selectStyle: View.propTypes.style,
     optionStyle: View.propTypes.style,
     optionTextStyle: Text.propTypes.style,
@@ -171,7 +172,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={this.props.style}>
                 {dp}
-                <TouchableOpacity onPress={this.open}>
+                <TouchableOpacity style={[styles.touchableStyle, this.props.touchableStyle]} onPress={this.open}>
                     {this.renderChildren()}
                 </TouchableOpacity>
             </View>

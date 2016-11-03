@@ -32,6 +32,10 @@ export default StyleSheet.create({
         top:(height-OPTION_CONTAINER_HEIGHT)/2 + 10
     },
 
+    touchableStyle: {
+        flex: 1
+    },
+
     selectStyle: {
         flex: 1,
         borderColor: '#ccc',
