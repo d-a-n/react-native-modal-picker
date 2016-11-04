@@ -84,6 +84,7 @@ class SampleApp extends Component {
 ## Props
 
 * `data - []` required, array of objects with a unique key and label
+* `open - boolean` optional, boolean that triggers whether or not the dialog is shown
 * `style - object` optional, style definitions for the root element
 * `onChange - function` optional, callback function, when the users has selected an option
 * `initValue - string` optional, text that is initially shown on the button
