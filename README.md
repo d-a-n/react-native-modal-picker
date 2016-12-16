@@ -67,13 +67,13 @@ class SampleApp extends Component {
                     data={data}
                     initValue="Select something yummy!"
                     onChange={(option)=>{ this.setState({textInputValue:option.label})}}>
-                    
+
                     <TextInput
                         style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
                         editable={false}
                         placeholder="Select something yummy!"
                         value={this.state.textInputValue} />
-                        
+
                 </ModalPicker>
             </View>
         );
@@ -86,6 +86,7 @@ class SampleApp extends Component {
 * `data - []` required, array of objects with a unique key and label
 * `style - object` optional, style definitions for the root element
 * `onChange - function` optional, callback function, when the users has selected an option
+* `onClose - function` optional, callback function, when the modal is closed
 * `initValue - string` optional, text that is initially shown on the button
 * `cancelText - string` optional, text of the cancel button
 * `selectStyle - object` optional, style definitions for the select element (available in default mode only!)
