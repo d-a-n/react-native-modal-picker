@@ -33,7 +33,8 @@ const propTypes = {
     cancelStyle: View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: View.propTypes.style,
-    cancelText: PropTypes.string
+    cancelText: PropTypes.string,
+    allowFontScaling: PropTypes.bool
 };
 
 const defaultProps = {
@@ -49,7 +50,8 @@ const defaultProps = {
     cancelStyle: {},
     cancelTextStyle: {},
     overlayStyle: {},
-    cancelText: 'cancel'
+    cancelText: 'cancel',
+    allowFontScaling: true
 };
 
 export default class ModalPicker extends BaseComponent {
@@ -105,7 +107,10 @@ export default class ModalPicker extends BaseComponent {
     renderSection(section) {
         return (
             <View key={section.key} style={[styles.sectionStyle,this.props.sectionStyle]}>
-                <Text style={[styles.sectionTextStyle,this.props.sectionTextStyle]}>{section.label}</Text>
+                <Text
+                  allowFontScaling={this.props.allowFontScaling}
+                  style={[styles.sectionTextStyle,this.props.sectionTextStyle]}
+                >{section.label}</Text>
             </View>
         );
     }
@@ -114,7 +119,10 @@ export default class ModalPicker extends BaseComponent {
         return (
             <TouchableOpacity key={option.key} onPress={()=>this.onChange(option)}>
                 <View style={[styles.optionStyle, this.props.optionStyle]}>
-                    <Text style={[styles.optionTextStyle,this.props.optionTextStyle]}>{option.label}</Text>
+                    <Text
+                      allowFontScaling={this.props.allowFontScaling}
+                      style={[styles.optionTextStyle,this.props.optionTextStyle]}
+                    >{option.label}</Text>
                 </View>
             </TouchableOpacity>)
     }
@@ -140,7 +148,10 @@ export default class ModalPicker extends BaseComponent {
                 <View style={styles.cancelContainer}>
                     <TouchableOpacity onPress={this.close}>
                         <View style={[styles.cancelStyle, this.props.cancelStyle]}>
-                            <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                            <Text
+                              allowFontScaling={this.props.allowFontScaling}
+                              style={[styles.cancelTextStyle,this.props.cancelTextStyle]}
+                            >{this.props.cancelText}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -155,7 +166,10 @@ export default class ModalPicker extends BaseComponent {
         }
         return (
             <View style={[styles.selectStyle, this.props.selectStyle]}>
-                <Text style={[styles.selectTextStyle, this.props.selectTextStyle]}>{this.state.selected}</Text>
+                <Text
+                  allowFontScaling={this.props.allowFontScaling}
+                  style={[styles.selectTextStyle, this.props.selectTextStyle]}
+                >{this.state.selected}</Text>
             </View>
         );
     }
