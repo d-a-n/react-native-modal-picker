@@ -15,7 +15,7 @@ import {
     Platform
 } from 'react-native';
 
-import styles from './style';
+import styles, {OPTION_CONTAINER_HEIGHT} from './style';
 import BaseComponent from './BaseComponent';
 
 let componentIndex = 0;
@@ -128,16 +128,19 @@ export default class ModalPicker extends BaseComponent {
             }
         });
 
+        const {height} = Dimensions.get('window');
+        const containerTop = (height-OPTION_CONTAINER_HEIGHT)/2;
+
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
-                <View style={styles.optionContainer}>
+                <View style={[styles.optionContainer, {top: containerTop}]}>
                     <ScrollView keyboardShouldPersistTaps>
                         <View style={{paddingHorizontal:10}}>
                             {options}
                         </View>
                     </ScrollView>
                 </View>
-                <View style={styles.cancelContainer}>
+                <View style={[styles.cancelContainer, {top: containerTop+10}]}>
                     <TouchableOpacity onPress={this.close}>
                         <View style={[styles.cancelStyle, this.props.cancelStyle]}>
                             <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
