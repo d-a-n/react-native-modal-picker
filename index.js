@@ -19,6 +19,7 @@ import styles from './style';
 import BaseComponent from './BaseComponent';
 
 let componentIndex = 0;
+let elementIndex = 0;
 
 const propTypes = {
     data: PropTypes.array,
@@ -69,24 +70,26 @@ export default class ModalPicker extends BaseComponent {
             animationType: 'slide',
             modalVisible: false,
             transparent: false,
-            selected: 'please select'
+            labelName: 'label',
+            selected: null,
+            placeholder: 'Please select a value'
         };
     }
 
     componentDidMount() {
-        this.setState({selected: this.props.initValue});
+        this.setState({selected: this.props.initValue, labelName: this.props.labelName, placeholder: this.props.placeholder});
         this.setState({cancelText: this.props.cancelText});
     }
 
     componentWillReceiveProps(nextProps) {
-      if (nextProps.initValue != this.props.initValue) {
-        this.setState({selected: nextProps.initValue});
+      if (nextProps.initValue != this.props.initValue || nextProps.labelName != this.props.labelName || nextProps.placeholder != this.props.placeholder) {
+        this.setState({selected: nextProps.initValue, labelName: this.props.labelName, placeholder: this.props.placeholder});
       }
     }
 
     onChange(item) {
         this.props.onChange(item);
-        this.setState({selected: item.label});
+        this.setState({selected: item});
         this.close();
     }
 
@@ -102,29 +105,34 @@ export default class ModalPicker extends BaseComponent {
       });
     }
 
-    renderSection(section) {
+    renderSection(section, labelName) {
         return (
-            <View key={section.key} style={[styles.sectionStyle,this.props.sectionStyle]}>
-                <Text style={[styles.sectionTextStyle,this.props.sectionTextStyle]}>{section.label}</Text>
+            <View key={elementIndex++} style={[styles.sectionStyle,this.props.sectionStyle]}>
+                <Text style={[styles.sectionTextStyle,this.props.sectionTextStyle]}>{section[labelName]}</Text>
             </View>
         );
     }
 
-    renderOption(option) {
+    renderOption(option, labelName) {
         return (
-            <TouchableOpacity key={option.key} onPress={()=>this.onChange(option)}>
+            <TouchableOpacity key={elementIndex++} onPress={()=>this.onChange(option)}>
                 <View style={[styles.optionStyle, this.props.optionStyle]}>
-                    <Text style={[styles.optionTextStyle,this.props.optionTextStyle]}>{option.label}</Text>
+                    <Text style={[styles.optionTextStyle,this.props.optionTextStyle]}>{option[labelName]}</Text>
                 </View>
             </TouchableOpacity>)
     }
 
     renderOptionList() {
+        if(!(this.props.data && this.props.data.length > 0)){
+          return (
+            <View></View>
+          )
+        }
         var options = this.props.data.map((item) => {
             if (item.section) {
-                return this.renderSection(item);
+                return this.renderSection(item, this.state.labelName);
             } else {
-                return this.renderOption(item);
+                return this.renderOption(item, this.state.labelName);
             }
         });
 
@@ -144,7 +152,6 @@ export default class ModalPicker extends BaseComponent {
                         </View>
                     </TouchableOpacity>
                 </View>
-
             </View>);
     }
 
@@ -155,7 +162,7 @@ export default class ModalPicker extends BaseComponent {
         }
         return (
             <View style={[styles.selectStyle, this.props.selectStyle]}>
-                <Text style={[styles.selectTextStyle, this.props.selectTextStyle]}>{this.state.selected}</Text>
+                <Text style={[styles.selectTextStyle, this.props.selectTextStyle]}>{this.state.selected? this.state.selected[this.state.labelName] : this.state.placeholder}</Text>
             </View>
         );
     }
