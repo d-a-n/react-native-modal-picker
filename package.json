@@ -22,6 +22,9 @@
     "android",
     "react-component"
   ],
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  },
   "author": "Daniel Korger <dan@imake.io>",
   "contributors": [
     {

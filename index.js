@@ -1,8 +1,7 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
     View,
@@ -33,7 +32,8 @@ const propTypes = {
     cancelStyle: View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: View.propTypes.style,
-    cancelText: PropTypes.string
+    cancelText: PropTypes.string,
+    keyboardShouldPersistTaps: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 const defaultProps = {
@@ -49,7 +49,8 @@ const defaultProps = {
     cancelStyle: {},
     cancelTextStyle: {},
     overlayStyle: {},
-    cancelText: 'cancel'
+    cancelText: 'cancel',
+    keyboardShouldPersistTaps: 'always'
 };
 
 export default class ModalPicker extends BaseComponent {
@@ -131,7 +132,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
                 <View style={styles.optionContainer}>
-                    <ScrollView keyboardShouldPersistTaps>
+                    <ScrollView keyboardShouldPersistTaps={this.props.keyboardShouldPersistTaps}>
                         <View style={{paddingHorizontal:10}}>
                             {options}
                         </View>
