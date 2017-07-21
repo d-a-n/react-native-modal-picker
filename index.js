@@ -11,27 +11,29 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
-    Platform
+    Platform,
+    ViewPropTypes
 } from 'react-native';
 
 import styles from './style';
 import BaseComponent from './BaseComponent';
 
 let componentIndex = 0;
+let rnVersion = Number.parseFloat(require('react-native/package.json').version);
 
 const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: View.propTypes.style,
-    selectStyle: View.propTypes.style,
-    optionStyle: View.propTypes.style,
+    style: rnVersion >= 0.44 ? ViewPropTypes.style : View.propTypes.style,
+    selectStyle: rnVersion >= 0.44 ? ViewPropTypes.style : View.propTypes.style,
+    optionStyle: rnVersion >= 0.44 ? ViewPropTypes.style : View.propTypes.style,
     optionTextStyle: Text.propTypes.style,
-    sectionStyle: View.propTypes.style,
+    sectionStyle: rnVersion >= 0.44 ? ViewPropTypes.style : View.propTypes.style,
     sectionTextStyle: Text.propTypes.style,
-    cancelStyle: View.propTypes.style,
+    cancelStyle: rnVersion >= 0.44 ? ViewPropTypes.style : View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
-    overlayStyle: View.propTypes.style,
+    overlayStyle: rnVersion >= 0.44 ? ViewPropTypes.style : View.propTypes.style,
     cancelText: PropTypes.string,
     keyboardShouldPersistTaps: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
