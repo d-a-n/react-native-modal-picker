@@ -67,7 +67,7 @@ export default class ModalPicker extends BaseComponent {
         );
 
         this.state = {
-            modalVisible: null,
+            modalVisible: false,
             transparent: false,
             selected: 'please select'
         };
@@ -140,7 +140,7 @@ export default class ModalPicker extends BaseComponent {
                     </ScrollView>
                 </View>
                 <View style={styles.cancelContainer}>
-                    <TouchableOpacity onPress={() => {onClose && onClose(); this.close}}>
+                    <TouchableOpacity onPress={() => {onClose && onClose(); this.close()}}>
                         <View style={[styles.cancelStyle, this.props.cancelStyle]}>
                             <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
                         </View>
