@@ -15,21 +15,23 @@ export default StyleSheet.create({
     overlayStyle: {
         width: width,
         height: height,
-        backgroundColor: 'rgba(0,0,0,0.7)'
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: width*0.1,
+        paddingRight: width*0.1,
     },
 
     optionContainer: {
+        width: '100%',
         borderRadius:BORDER_RADIUS,
-        width:width*0.8,
-        height:OPTION_CONTAINER_HEIGHT,
+        maxHeight: OPTION_CONTAINER_HEIGHT,
         backgroundColor:'rgba(255,255,255,0.8)',
-        left:width*0.1,
-        top:(height-OPTION_CONTAINER_HEIGHT)/2
     },
 
     cancelContainer: {
-        left:width*0.1,
-        top:(height-OPTION_CONTAINER_HEIGHT)/2 + 10
+        marginTop:10,
+        width: '100%',
     },
 
     selectStyle: {
@@ -47,8 +49,8 @@ export default StyleSheet.create({
     },
 
     cancelStyle: {
+        width: '100%',
         borderRadius: BORDER_RADIUS,
-        width: width * 0.8,
         backgroundColor: 'rgba(255,255,255,0.8)',
         padding: PADDING
     },
