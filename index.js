@@ -55,9 +55,9 @@ const defaultProps = {
 
 export default class ModalPicker extends BaseComponent {
 
-    constructor() {
+    constructor(props) {
 
-        super();
+        super(props);
 
         this._bind(
             'onChange',
@@ -67,7 +67,7 @@ export default class ModalPicker extends BaseComponent {
         );
 
         this.state = {
-            modalVisible: false,
+            modalVisible: props.opened || false,
             transparent: false,
             selected: 'please select'
         };
@@ -167,7 +167,7 @@ export default class ModalPicker extends BaseComponent {
         let {opened, onClose} = this.props;
 
         const dp = (
-          <Modal transparent={true} ref="modal" visible={this.state.modalVisible != null ? this.state.modalVisible : opened} onRequestClose={() => {onClose && onClose(); this.close();}} animationType={this.props.animationType}>
+          <Modal transparent={true} ref="modal" visible={this.state.modalVisible} onRequestClose={() => {onClose && onClose(); this.close();}} animationType={this.props.animationType}>
           {this.renderOptionList()}
           </Modal>
         );
