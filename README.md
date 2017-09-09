@@ -86,6 +86,7 @@ class SampleApp extends Component {
 * `data - []` required, array of objects with a unique key and label
 * `style - object` optional, style definitions for the root element
 * `onChange - function` optional, callback function, when the users has selected an option
+* `beforeOpen - function` optional will be called before the modal is opened
 * `initValue - string` optional, text that is initially shown on the button
 * `cancelText - string` optional, text of the cancel button
 * `selectStyle - object` optional, style definitions for the select element (available in default mode only!)
