@@ -42,7 +42,7 @@ const defaultProps = {
     data: [],
     onChange: ()=> {},
     beforeOpen: () => {},
-    beforeCloseL () => {},
+    beforeClose: () => {},
     initValue: 'Select me!',
     style: {},
     selectStyle: {},
