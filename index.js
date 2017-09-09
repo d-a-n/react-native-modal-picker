@@ -23,6 +23,8 @@ let componentIndex = 0;
 const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
+    beforeOpen: PropTypes.func,
+    beforeClose: PropTypes.func,
     initValue: PropTypes.string,
     style: View.propTypes.style,
     selectStyle: View.propTypes.style,
@@ -33,13 +35,14 @@ const propTypes = {
     cancelStyle: View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: View.propTypes.style,
-    cancelText: PropTypes.string,
-    beforeOpen: PropTypes.func
+    cancelText: PropTypes.string
 };
 
 const defaultProps = {
     data: [],
     onChange: ()=> {},
+    beforeOpen: () => {},
+    beforeCloseL () => {},
     initValue: 'Select me!',
     style: {},
     selectStyle: {},
@@ -50,8 +53,7 @@ const defaultProps = {
     cancelStyle: {},
     cancelTextStyle: {},
     overlayStyle: {},
-    cancelText: 'cancel',
-    beforeOpen: () => {}
+    cancelText: 'cancel'
 };
 
 export default class ModalPicker extends BaseComponent {
@@ -93,12 +95,14 @@ export default class ModalPicker extends BaseComponent {
     }
 
     close() {
+      this.props.beforeClose();
       this.setState({
         modalVisible: false
       });
     }
 
     open() {
+      this.props.beforeOpen();
       this.setState({
         modalVisible: true
       });
@@ -173,12 +177,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={this.props.style}>
                 {dp}
-                <TouchableOpacity 
-                    onPress={() => {
-                        this.props.beforeOpen();
-                        this.open();
-                    }}
-                >
+                <TouchableOpacity onPress={this.open} >
                     {this.renderChildren()}
                 </TouchableOpacity>
             </View>
