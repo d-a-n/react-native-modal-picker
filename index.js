@@ -23,6 +23,8 @@ let componentIndex = 0;
 const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
+    beforeOpen: PropTypes.func,
+    beforeClose: PropTypes.func,
     initValue: PropTypes.string,
     style: View.propTypes.style,
     selectStyle: View.propTypes.style,
@@ -33,12 +35,16 @@ const propTypes = {
     cancelStyle: View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: View.propTypes.style,
+    optionContainerStyle: View.propTypes.style,
+    cancelContainerStyle: View.propTypes.style,
     cancelText: PropTypes.string
 };
 
 const defaultProps = {
     data: [],
     onChange: ()=> {},
+    beforeOpen: () => {},
+    beforeClose: () => {},
     initValue: 'Select me!',
     style: {},
     selectStyle: {},
@@ -91,12 +97,14 @@ export default class ModalPicker extends BaseComponent {
     }
 
     close() {
+      this.props.beforeClose();
       this.setState({
         modalVisible: false
       });
     }
 
     open() {
+      this.props.beforeOpen();
       this.setState({
         modalVisible: true
       });
@@ -130,14 +138,14 @@ export default class ModalPicker extends BaseComponent {
 
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
-                <View style={styles.optionContainer}>
-                    <ScrollView keyboardShouldPersistTaps>
+                <View style={[styles.optionContainer, this.props.optionContainerStyle]}>
+                    <ScrollView keyboardShouldPersistTaps='always'>
                         <View style={{paddingHorizontal:10}}>
                             {options}
                         </View>
                     </ScrollView>
                 </View>
-                <View style={styles.cancelContainer}>
+                <View style={[styles.cancelContainer, this.props.cancelContainerStyle]}>
                     <TouchableOpacity onPress={this.close}>
                         <View style={[styles.cancelStyle, this.props.cancelStyle]}>
                             <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
@@ -171,7 +179,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={this.props.style}>
                 {dp}
-                <TouchableOpacity onPress={this.open}>
+                <TouchableOpacity onPress={this.open} >
                     {this.renderChildren()}
                 </TouchableOpacity>
             </View>
