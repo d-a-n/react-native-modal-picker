@@ -35,6 +35,8 @@ const propTypes = {
     cancelStyle: View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
     overlayStyle: View.propTypes.style,
+    optionContainerStyle: View.propTypes.style,
+    cancelContainerStyle: View.propTypes.style,
     cancelText: PropTypes.string
 };
 
@@ -136,14 +138,14 @@ export default class ModalPicker extends BaseComponent {
 
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
-                <View style={styles.optionContainer}>
-                    <ScrollView keyboardShouldPersistTaps>
+                <View style={[styles.optionContainer, this.props.optionContainerStyle]}>
+                    <ScrollView keyboardShouldPersistTaps='always'>
                         <View style={{paddingHorizontal:10}}>
                             {options}
                         </View>
                     </ScrollView>
                 </View>
-                <View style={styles.cancelContainer}>
+                <View style={[styles.cancelContainer, this.props.cancelContainerStyle]}>
                     <TouchableOpacity onPress={this.close}>
                         <View style={[styles.cancelStyle, this.props.cancelStyle]}>
                             <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
