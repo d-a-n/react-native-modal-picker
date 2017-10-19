@@ -175,7 +175,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={this.props.style}>
                 {dp}
-                {this.renderOptionList()}
+                {this.renderChildren()}
             </View>
         );
     }
