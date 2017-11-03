@@ -128,23 +128,27 @@ export default class ModalPicker extends BaseComponent {
         });
 
         return (
-            <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
-                <View style={styles.optionContainer}>
-                    <ScrollView keyboardShouldPersistTaps="always">
-                        <View style={{paddingHorizontal:10}}>
-                            {options}
-                        </View>
-                    </ScrollView>
+            <TouchableOpacity
+                activeOpacity={1}
+                onPressOut={this.close}
+            >
+                <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker' + (componentIndex++)}>
+                    <View style={styles.optionContainer}>
+                        <ScrollView keyboardShouldPersistTaps="always">
+                            <View style={{ paddingHorizontal: 10 }}>
+                                {options}
+                            </View>
+                        </ScrollView>
+                    </View>
+                    <View style={styles.cancelContainer}>
+                        <TouchableOpacity onPress={this.close}>
+                            <View style={[styles.cancelStyle, this.props.cancelStyle]}>
+                                <Text style={[styles.cancelTextStyle, this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.cancelContainer}>
-                    <TouchableOpacity onPress={this.close}>
-                        <View style={[styles.cancelStyle, this.props.cancelStyle]}>
-                            <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
-            </View>);
+            </TouchableOpacity>);
     }
 
     renderChildren() {
