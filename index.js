@@ -1,8 +1,6 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
 
 import {
     View,
@@ -17,6 +15,7 @@ import {
 
 import styles from './style';
 import BaseComponent from './BaseComponent';
+import PropTypes from 'prop-types';
 
 let componentIndex = 0;
 
