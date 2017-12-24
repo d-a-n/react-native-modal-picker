@@ -1,9 +1,5 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
-
 import {
     View,
     StyleSheet,
@@ -14,6 +10,8 @@ import {
     TouchableOpacity,
     Platform
 } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 import styles from './style';
 import BaseComponent from './BaseComponent';
