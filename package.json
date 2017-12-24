@@ -12,6 +12,7 @@
     "url": "https://github.com/d-a-n/react-native-modal-picker.git"
   },
   "dependencies": {
+    "react": "^16.0.0-alpha.12",
     "prop-types": "^15.6.0"
   },
   "keywords": [
