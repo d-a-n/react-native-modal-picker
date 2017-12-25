@@ -1,8 +1,6 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
 
 import {
     View,
@@ -14,6 +12,8 @@ import {
     TouchableOpacity,
     Platform
 } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 import styles from './style';
 import BaseComponent from './BaseComponent';
@@ -38,7 +38,8 @@ const propTypes = {
 
 const defaultProps = {
     data: [],
-    onChange: ()=> {},
+    onChange: () => {
+    },
     initValue: 'Select me!',
     style: {},
     selectStyle: {},
@@ -79,9 +80,9 @@ export default class ModalPicker extends BaseComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (nextProps.initValue != this.props.initValue) {
-        this.setState({selected: nextProps.initValue});
-      }
+        if (nextProps.initValue != this.props.initValue) {
+            this.setState({selected: nextProps.initValue});
+        }
     }
 
     onChange(item) {
@@ -91,30 +92,30 @@ export default class ModalPicker extends BaseComponent {
     }
 
     close() {
-      this.setState({
-        modalVisible: false
-      });
+        this.setState({
+            modalVisible: false
+        });
     }
 
     open() {
-      this.setState({
-        modalVisible: true
-      });
+        this.setState({
+            modalVisible: true
+        });
     }
 
     renderSection(section) {
         return (
-            <View key={section.key} style={[styles.sectionStyle,this.props.sectionStyle]}>
-                <Text style={[styles.sectionTextStyle,this.props.sectionTextStyle]}>{section.label}</Text>
+            <View key={section.key} style={[styles.sectionStyle, this.props.sectionStyle]}>
+                <Text style={[styles.sectionTextStyle, this.props.sectionTextStyle]}>{section.label}</Text>
             </View>
         );
     }
 
     renderOption(option) {
         return (
-            <TouchableOpacity key={option.key} onPress={()=>this.onChange(option)}>
+            <TouchableOpacity key={option.key} onPress={() => this.onChange(option)}>
                 <View style={[styles.optionStyle, this.props.optionStyle]}>
-                    <Text style={[styles.optionTextStyle,this.props.optionTextStyle]}>{option.label}</Text>
+                    <Text style={[styles.optionTextStyle, this.props.optionTextStyle]}>{option.label}</Text>
                 </View>
             </TouchableOpacity>)
     }
@@ -129,10 +130,10 @@ export default class ModalPicker extends BaseComponent {
         });
 
         return (
-            <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
+            <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker' + (componentIndex++)}>
                 <View style={styles.optionContainer}>
                     <ScrollView keyboardShouldPersistTaps>
-                        <View style={{paddingHorizontal:10}}>
+                        <View style={{paddingHorizontal: 10}}>
                             {options}
                         </View>
                     </ScrollView>
@@ -140,7 +141,8 @@ export default class ModalPicker extends BaseComponent {
                 <View style={styles.cancelContainer}>
                     <TouchableOpacity onPress={this.close}>
                         <View style={[styles.cancelStyle, this.props.cancelStyle]}>
-                            <Text style={[styles.cancelTextStyle,this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
+                            <Text
+                                style={[styles.cancelTextStyle, this.props.cancelTextStyle]}>{this.props.cancelText}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -150,7 +152,7 @@ export default class ModalPicker extends BaseComponent {
 
     renderChildren() {
 
-        if(this.props.children) {
+        if (this.props.children) {
             return this.props.children;
         }
         return (
@@ -163,9 +165,10 @@ export default class ModalPicker extends BaseComponent {
     render() {
 
         const dp = (
-          <Modal transparent={true} ref="modal" visible={this.state.modalVisible} onRequestClose={this.close} animationType={this.state.animationType}>
-          {this.renderOptionList()}
-          </Modal>
+            <Modal transparent={true} ref="modal" visible={this.state.modalVisible} onRequestClose={this.close}
+                   animationType={this.state.animationType}>
+                {this.renderOptionList()}
+            </Modal>
         );
 
         return (
