@@ -20,7 +20,7 @@ import BaseComponent from './BaseComponent';
 
 let componentIndex = 0;
 
-// const propTypes = {
+const propTypes = {
 //     data: PropTypes.array,
 //     onChange: PropTypes.func,
 //     initValue: PropTypes.string,
@@ -34,7 +34,7 @@ let componentIndex = 0;
 //     cancelTextStyle: Text.propTypes.style,
 //     overlayStyle: View.propTypes.style,
 //     cancelText: PropTypes.string
-// };
+};
 
 const defaultProps = {
     data: [],
