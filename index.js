@@ -21,6 +21,7 @@ import BaseComponent from './BaseComponent';
 let componentIndex = 0;
 
 const propTypes = {
+    
 //     data: PropTypes.array,
 //     onChange: PropTypes.func,
 //     initValue: PropTypes.string,
