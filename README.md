@@ -1,6 +1,8 @@
 [![npm version](https://badge.fury.io/js/react-native-modal-picker.svg)](https://badge.fury.io/js/react-native-modal-picker)
 
 # react-native-modal-picker
+Requires react-native >= 0.51.0.
+
 A cross-platform (iOS / Android), selector/picker component for React Native that is highly customizable and supports sections.
 
 ## Demo
