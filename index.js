@@ -1,8 +1,6 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
 
 import {
     View,
@@ -12,11 +10,13 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
-    Platform
+    Platform,
+    ViewPropTypes
 } from 'react-native';
 
 import styles from './style';
 import BaseComponent from './BaseComponent';
+import PropTypes from 'prop-types';
 
 let componentIndex = 0;
 
@@ -24,15 +24,15 @@ const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: View.propTypes.style,
-    selectStyle: View.propTypes.style,
-    optionStyle: View.propTypes.style,
+    style: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+    selectStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+    optionStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
     optionTextStyle: Text.propTypes.style,
-    sectionStyle: View.propTypes.style,
+    sectionStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
     sectionTextStyle: Text.propTypes.style,
-    cancelStyle: View.propTypes.style,
+    cancelStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
     cancelTextStyle: Text.propTypes.style,
-    overlayStyle: View.propTypes.style,
+    overlayStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
     cancelText: PropTypes.string
 };
 
