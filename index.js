@@ -1,8 +1,7 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
     View,
@@ -12,7 +11,8 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
-    Platform
+    Platform,
+    ViewPropTypes
 } from 'react-native';
 
 import styles from './style';
@@ -24,15 +24,15 @@ const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: View.propTypes.style,
-    selectStyle: View.propTypes.style,
-    optionStyle: View.propTypes.style,
+    style: ViewPropTypes.style,
+    selectStyle: ViewPropTypes.style,
+    optionStyle: ViewPropTypes.style,
     optionTextStyle: Text.propTypes.style,
-    sectionStyle: View.propTypes.style,
+    sectionStyle: ViewPropTypes.style,
     sectionTextStyle: Text.propTypes.style,
-    cancelStyle: View.propTypes.style,
+    cancelStyle: ViewPropTypes.style,
     cancelTextStyle: Text.propTypes.style,
-    overlayStyle: View.propTypes.style,
+    overlayStyle: ViewPropTypes.style,
     cancelText: PropTypes.string
 };
 
@@ -131,7 +131,7 @@ export default class ModalPicker extends BaseComponent {
         return (
             <View style={[styles.overlayStyle, this.props.overlayStyle]} key={'modalPicker'+(componentIndex++)}>
                 <View style={styles.optionContainer}>
-                    <ScrollView keyboardShouldPersistTaps>
+                    <ScrollView keyboardShouldPersistTaps="always">
                         <View style={{paddingHorizontal:10}}>
                             {options}
                         </View>
