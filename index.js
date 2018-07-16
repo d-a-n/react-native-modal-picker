@@ -1,8 +1,8 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
+import { ViewPropTypes } from 'react-native';
+import PropTypes from 'prop-types';
 
 import {
     View,
@@ -24,15 +24,15 @@ const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: View.propTypes.style,
-    selectStyle: View.propTypes.style,
-    optionStyle: View.propTypes.style,
+    style: ViewPropTypes.style,
+    selectStyle: ViewPropTypes.style,
+    optionStyle: ViewPropTypes.style,
     optionTextStyle: Text.propTypes.style,
-    sectionStyle: View.propTypes.style,
+    sectionStyle: ViewPropTypes.style,
     sectionTextStyle: Text.propTypes.style,
-    cancelStyle: View.propTypes.style,
+    cancelStyle: ViewPropTypes.style,
     cancelTextStyle: Text.propTypes.style,
-    overlayStyle: View.propTypes.style,
+    overlayStyle: ViewPropTypes.style,
     cancelText: PropTypes.string
 };
 
@@ -181,3 +181,4 @@ export default class ModalPicker extends BaseComponent {
 
 ModalPicker.propTypes = propTypes;
 ModalPicker.defaultProps = defaultProps;
+
