@@ -22,16 +22,16 @@ const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: PropTypes.any,
-    selectStyle: PropTypes.any,
-    optionStyle: PropTypes.any,
-    optionTextStyle: PropTypes.any,
-    sectionStyle: PropTypes.any,
-    sectionTextStyle: PropTypes.any,
-    cancelStyle: PropTypes.any,
-    cancelTextStyle: PropTypes.any,
-    overlayStyle: PropTypes.any,
-    cancelText: PropTypes.string
+    style: PropTypes.object,
+    selectStyle: PropTypes.object,
+    optionStyle: PropTypes.object,
+    optionTextStyle: PropTypes.object,
+    sectionStyle: PropTypes.object,
+    sectionTextStyle: PropTypes.object,
+    cancelStyle: PropTypes.object,
+    cancelTextStyle: PropTypes.object,
+    overlayStyle: PropTypes.object,
+    cancelText: PropTypes.object
 };
 
 const defaultProps = {
