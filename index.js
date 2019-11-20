@@ -1,8 +1,7 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
     View,
@@ -70,7 +69,8 @@ export default class ModalPicker extends BaseComponent {
             animationType: 'slide',
             modalVisible: false,
             transparent: false,
-            selected: 'please select'
+            selected: 'please select',
+            initValue: 'Select me!'
         };
     }
 
@@ -79,11 +79,12 @@ export default class ModalPicker extends BaseComponent {
         this.setState({cancelText: this.props.cancelText});
     }
 
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.initValue != this.props.initValue) {
-        this.setState({selected: nextProps.initValue});
-      }
-    }
+    static getDerivedStateFromProps(nextProps, prevState){
+        if(nextProps.initValue !== prevState.initValue){
+          return { selected: nextProps.initValue};
+       }
+       else return null;
+     }
 
     onChange(item) {
         this.props.onChange(item);
