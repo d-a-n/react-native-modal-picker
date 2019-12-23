@@ -1,15 +1,23 @@
 {
-  "name": "react-native-modal-picker",
-  "version": "0.0.16",
-  "description": "",
+  "name": "react-native-modal-selector",
+  "version": "2.0.0",
+  "description": "A cross-platform (iOS / Android), selector/picker component for React Native that is highly customizable and supports sections.",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "lint": "./node_modules/.bin/eslint ./",
+    "lint-fix": "./node_modules/.bin/eslint --fix ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-fix && git add ."
+    }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/d-a-n/react-native-modal-picker.git"
+    "url": "git+https://github.com/peacechen/react-native-modal-selector.git"
   },
   "keywords": [
     "react-native",
@@ -22,16 +30,29 @@
     "android",
     "react-component"
   ],
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  },
   "author": "Daniel Korger <dan@imake.io>",
   "contributors": [
-    {
-      "name": "Alex Spring",
-      "email": "notlose@hotmail.com"
-    }
+    "Alex Spring <notlose@hotmail.com>",
+    "Peace Chen (https://github.com/peacechen)"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/d-a-n/react-native-modal-picker/issues"
+    "url": "https://github.com/peacechen/react-native-modal-selector/issues"
   },
-  "homepage": "https://github.com/d-a-n/react-native-modal-picker"
+  "homepage": "https://github.com/peacechen/react-native-modal-selector",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.4.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.2.1",
+    "eslint-plugin-react-native": "^3.0.1",
+    "husky": "^3.1.0"
+  }
 }

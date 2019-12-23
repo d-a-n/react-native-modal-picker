@@ -1,13 +1,33 @@
 {
-  "name": "SampleApp",
-  "version": "0.0.2",
+  "name": "sample-app",
+  "version": "0.0.6",
   "private": true,
   "scripts": {
-    "start": "react-native run-ios"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "flow": "flow --show-all-errors",
+    "test": "jest",
+    "postinstall": "cp -f ../*.js node_modules/react-native-modal-selector/",
+    "nodemon": "nodemon nodemon.json"
   },
   "dependencies": {
-    "react": "^15.1.0",
-    "react-native": "^0.27.2",
-    "react-native-modal-picker": "file:../"
+    "react": "16.9.0",
+    "react-native": "0.61.5",
+    "react-native-elements": "^1.2.7",
+    "react-native-modal-selector": "*",
+    "react-native-vector-icons": "^6.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "nodemon": "^2.0.1",
+    "react-test-renderer": "16.9.0"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
