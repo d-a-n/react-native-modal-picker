@@ -11,6 +11,6 @@
   ],
   "ext": "js json png jpeg jpg",
   "events": {
-    "restart": "cp -rf ../*.{js,json} node_modules/react-native-modal-picker/"
+    "restart": "cp -rf ../*.{js,json} node_modules/react-native-modal-selector/"
   }
 }
