@@ -1,13 +1,35 @@
 {
-  "name": "SampleApp",
-  "version": "0.0.2",
-  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-native run-ios"
+    "start": "expo start",
+    "postinstall": "npm run cp",
+    "cp": "cpx \"../*.{js,ts}\" node_modules/react-native-modal-selector/ -u",
+    "nodemon": "nodemon nodemon.json",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "react": "^15.1.0",
-    "react-native": "^0.27.2",
-    "react-native-modal-picker": "file:../"
-  }
+    "expo": "~45.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-modal-selector": "https://github.com/peacechen/react-native-modal-selector.git",
+    "react-native-web": "0.17.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@deboxsoft/cpx": "^1.5.0",
+    "@types/react": "17",
+    "@types/react-native": "0.67.9",
+    "babel-preset-expo": "9.1.0",
+    "nodemon": "2.0.16",
+    "typescript": "4.7.4"
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
+  },
+  "private": true
 }
